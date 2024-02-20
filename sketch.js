@@ -21,6 +21,8 @@ function setup() {
             var pixelAlpha = img.pixels[pixelIndex + 3];
             var ave = (pixelRed + pixelGreen + pixelBlue)/3;
             //set RGB to ave value
+
+            ave=min(ave * 1.2, 255);
             img.pixels[pixelIndex+0] = ave;
             img.pixels[pixelIndex+1] = ave;
             img.pixels[pixelIndex+2] = ave;
