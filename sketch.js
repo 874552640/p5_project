@@ -2,11 +2,12 @@ var img;
 
 function preload(){
     img = loadImage("assets/beansbag.jpeg");
+
 }
 
 function setup() {
     createCanvas(1000,1000);
-    
+    img.resize(120,160);
     //load image pixel values into array pixels
     img.loadPixels();
     
