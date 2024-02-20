@@ -1,4 +1,5 @@
 var img;
+var img2;
 
 function preload(){
     img = loadImage("assets/beansbag.jpeg");
@@ -10,6 +11,15 @@ function setup() {
     img.resize(120,160);
     //load image pixel values into array pixels
     img.loadPixels();
+    img2 = createImage(img.width, img.height);
+
+    // 复制图像的像素数据
+
+    img2.loadPixels();
+    for (let i = 0; i < img.pixels.length; i++) {
+        img2.pixels[i] = img.pixels[i];
+    }
+    img2.updatePixels();
     
     for(var y=0;y<img.height;y++){
         for(var x=0;x<img.width;x++){
@@ -29,6 +39,11 @@ function setup() {
         }
     }
     img.updatePixels();
-    image(img,0,0);
+
+
+
+
+    image(img2,0,0);
+    image(img,140,0);
 }
 
