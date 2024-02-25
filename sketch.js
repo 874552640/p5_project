@@ -1,15 +1,33 @@
 var img;
 
+var redSlider;
+var greenSlider;
+var blueSlider;
+
+var imageLoaded = false;
 
 
+function imageLoadedCallback(){
+    imageLoaded = true;
+    img.loadPixels();
+}
 
 function preload(){
-    img = loadImage("assets/beansbag.jpeg");
+    img = loadImage("assets/beansbag.jpeg",imageLoadedCallback);
 
 }
 
 function setup() {
     createCanvas(1000,1000);
+
+
+    redSlider = createSlider(0,256,125);
+    redSlider.parent("redSlider");
+    greenSlider = createSlider(0,256,125);
+    greenSlider.parent("greenSlider");
+    blueSlider = createSlider(0,256,125);
+    blueSlider.parent("blueSlider");
+
     img.resize(120,160);
     //load image pixel values into array pixels
     image(img,0,0);
@@ -17,6 +35,8 @@ function setup() {
     grayscale(img);
 
     RGB_channels(img);
+
+
 
 
 
@@ -110,4 +130,64 @@ function RGB_channels(img) {
     image(redImg,0,redImg.height);
     image(greenImg,greenImg.width,greenImg.height);
     image(blueImg,blueImg.width*2,blueImg.height);
+}
+
+function draw(){
+
+    if(!imageLoaded)
+        return;
+
+    var redImg = createImage(img.width, img.height);
+    redImg.loadPixels();
+    var greenImg = createImage(img.width, img.height);
+    greenImg.loadPixels();
+    var blueImg = createImage(img.width, img.height);
+    blueImg.loadPixels();
+
+
+    for(var y=0;y<img.height;y++){
+        for(var x=0;x<img.width;x++){
+
+            var pixelIndex = ((img.width * y) + x)*4;
+            var pixelRed = img.pixels[pixelIndex + 0];
+            var pixelGreen = img.pixels[pixelIndex + 1];
+            var pixelBlue = img.pixels[pixelIndex + 2];
+
+            //red channel
+            if(redSlider.value()>pixelRed){
+                pixelRed = 0;
+            }
+            redImg.pixels[pixelIndex+0] = pixelRed;
+            redImg.pixels[pixelIndex+1] = 0;
+            redImg.pixels[pixelIndex+2] = 0;
+            redImg.pixels[pixelIndex+3] = 255;
+
+            //green channel
+            if(greenSlider.value()>pixelGreen){
+                pixelGreen = 0;
+            }
+            greenImg.pixels[pixelIndex+0] = 0;
+            greenImg.pixels[pixelIndex+1] = pixelGreen;
+            greenImg.pixels[pixelIndex+2] = 0;
+            greenImg.pixels[pixelIndex+3] = 255;
+
+            //blue channel
+            if(blueSlider.value()>pixelBlue){
+                pixelBlue = 0;
+            }
+            blueImg.pixels[pixelIndex+0] = 0;
+            blueImg.pixels[pixelIndex+1] = 0;
+            blueImg.pixels[pixelIndex+2] = pixelBlue;
+            blueImg.pixels[pixelIndex+3] = 255;
+
+        }
+    }
+    redImg.updatePixels();
+    greenImg.updatePixels();
+    blueImg.updatePixels();
+
+
+    image(redImg,0,img.height*2);
+    image(greenImg,blueImg.width,greenImg.height*2);
+    image(blueImg,blueImg.width*2,blueImg.height*2);
 }
