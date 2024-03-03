@@ -1,10 +1,14 @@
 var img;
 
+var key;
+
 var redSlider;
 var greenSlider;
 var blueSlider;
 
 var faceImg;
+var faceImg_copy;
+
 var detector;
 var classifier = objectdetect.frontalface;
 
@@ -19,14 +23,21 @@ function imageLoadedCallback(){
 function preload(){
     img = loadImage("assets/beansbag.jpeg",imageLoadedCallback);
     faceImg = loadImage("assets/face1.jpg",imageLoadedCallback());
+    faceImg_copy = loadImage("assets/face1.jpg",imageLoadedCallback());
+    // faceImg = loadImage("assets/face2.jpg",imageLoadedCallback());
+    // faceImg_copy = loadImage("assets/face2.jpg",imageLoadedCallback());
+
+
 
 }
 
 function setup() {
+
     pixelDensity(1);
     var scaleFactor = 1.2;
 
     faceImg.resize(120,160);
+    faceImg_copy.resize(120,160);
     detector = new objectdetect.detector(faceImg.width, faceImg.height, scaleFactor, classifier);
     createCanvas(1000,1000);
 
@@ -50,6 +61,17 @@ function setup() {
 
     image(img,0,img.height*3);
     HSB_IMG(img);
+
+    image(faceImg,0,img.height*4);
+
+    document.addEventListener("keydown", function(event){
+        key=event.key.toLowerCase();
+        face_detect();
+
+    });
+
+
+
 
 
 
@@ -196,6 +218,8 @@ function draw(){
     if(!imageLoaded)
         return;
 
+
+
     var redImg = createImage(img.width, img.height);
     redImg.loadPixels();
     var greenImg = createImage(img.width, img.height);
@@ -252,28 +276,113 @@ function draw(){
 
 
 
+    // faceImg.loadPixels();
+    // faceImg_copy.loadPixels();
+    //
+    //
+    //
+    // for (let i = 0; i < faceImg_copy.pixels.length; i++) {
+    //     faceImg.pixels[i] = faceImg_copy.pixels[i];
+    // }
+    //
+    // faceImg.updatePixels();
+    //
+    // //image(faceImg,0,0);
+    // faces = detector.detect(faceImg.canvas);
+    //
+    // strokeWeight(2);
+    // stroke(0);
+    // noFill();
+    //
+    // // faceImg.loadPixels();
+    // //
+    // // faceImg_copy.loadPixels();
+    // //
+    // //
+    // // for(var y=0;y<faceImg.height;y++){
+    // //     for(var x=0;x<faceImg.width;x++){
+    // //
+    // //         var pixelIndex = ((faceImg_copy.width * y) + x)*4;
+    // //         var pixelRed = faceImg_copy.pixels[pixelIndex + 0];
+    // //         var pixelGreen = faceImg_copy.pixels[pixelIndex + 1];
+    // //         var pixelBlue = faceImg_copy.pixels[pixelIndex + 2];
+    // //
+    // //
+    // //         faceImg.pixels[pixelIndex+0] = pixelRed;
+    // //         faceImg.pixels[pixelIndex+1] = pixelGreen;
+    // //         faceImg.pixels[pixelIndex+2] = pixelBlue;
+    // //
+    // //     }
+    // // }
+    // //
+    // // faceImg.updatePixels();
+    //
+    // for (var i=0; i<faces.length; i++){
+    //     var face=faces[i];
+    //     if (face[4] > 4){
+    //
+    //
+    //         // processPixels(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //         // greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //         // blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //         // pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //
+    //
+    //         switch (key) {
+    //             case "a":
+    //                 greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //                 break;
+    //             case "b":
+    //                 blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //                 break;
+    //             case "c":
+    //                 // image.src = "image_c.jpg";
+    //
+    //                 break;
+    //             case "d":
+    //                 greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //                 pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+    //                 break;
+    //             default:
+    //                 break;
+    //         }
+    //     }
+    // }
+    //
+    // faceImg.updatePixels();
+    // image(faceImg,0,faceImg.height*4);
 
-    //image(faceImg,0,0);
-    faces = detector.detect(faceImg.canvas);
 
-    strokeWeight(2);
-    stroke(0);
-    noFill();
 
-    faceImg.loadPixels();
-    for (var i=0; i<faces.length; i++){
-        var face=faces[i];
-        if (face[4] > 4){
-            // processPixels(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
-            greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
-            // blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
-            pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+
+    var hsbImg = createImage(img.width, img.height);
+    hsbImg.loadPixels();
+
+    //load image pixel values into array pixels
+    img.loadPixels();
+    for(var y=0;y<img.height;y++){
+        for(var x=0;x<img.width;x++){
+
+            var pixelIndex = ((img.width * y) + x)*4;
+            var pixelRed = img.pixels[pixelIndex + 0];
+            var pixelGreen = img.pixels[pixelIndex + 1];
+            var pixelBlue = img.pixels[pixelIndex + 2];
+
+            var hsb = rgbToHsb(pixelRed,pixelGreen,pixelBlue);
+            //display h ueas red, saturation as green, brightness as  blue
+            hsbImg.pixels[pixelIndex+0] = hsb[0]*1.5;
+            hsbImg.pixels[pixelIndex+1] = hsb[1]*1.5;
+            hsbImg.pixels[pixelIndex+2] = hsb[2]*2;
+            hsbImg.pixels[pixelIndex+3] = 255;
+
         }
     }
+    hsbImg.updatePixels();
 
-    faceImg.updatePixels();
-    image(faceImg,0,faceImg.height*4);
-    noLoop();
+    image(hsbImg,hsbImg.width,img.height*4);
+
+
+    // noLoop();
 }
 
 function processPixels(startX,startY,dWidth,dHeight){
@@ -407,4 +516,112 @@ function pixel_face(startX,startY,dWidth,dHeight){
 
         }
     }
+}
+
+function HSB_face(startX,startY,dWidth,dHeight){
+
+
+
+
+    //load image pixel values into array pixels
+    faceImg.loadPixels();
+    for(var y=startY;y<startY+dHeight;y++){
+        for(var x=startX;x<startX+dWidth;x++){
+
+            var pixelIndex = ((faceImg.width * y) + x)*4;
+            var pixelRed = faceImg.pixels[pixelIndex + 0];
+            var pixelGreen = faceImg.pixels[pixelIndex + 1];
+            var pixelBlue = faceImg.pixels[pixelIndex + 2];
+
+            var hsb = rgbToHsb(pixelRed,pixelGreen,pixelBlue);
+            //display h ueas red, saturation as green, brightness as  blue
+            faceImg.pixels[pixelIndex+0] = hsb[0]*1.5;
+            faceImg.pixels[pixelIndex+1] = hsb[1]*1.5;
+            faceImg.pixels[pixelIndex+2] = hsb[2]*2;
+            faceImg.pixels[pixelIndex+3] = 255;
+
+        }
+    }
+    faceImg.updatePixels();
+
+    // image(faceImg,0,img.height*3);
+}
+
+function face_detect(){
+
+    faceImg.loadPixels();
+    faceImg_copy.loadPixels();
+
+
+
+    for (let i = 0; i < faceImg_copy.pixels.length; i++) {
+        faceImg.pixels[i] = faceImg_copy.pixels[i];
+    }
+
+    faceImg.updatePixels();
+
+    //image(faceImg,0,0);
+    faces = detector.detect(faceImg.canvas);
+
+    strokeWeight(2);
+    stroke(0);
+    noFill();
+
+    // faceImg.loadPixels();
+    //
+    // faceImg_copy.loadPixels();
+    //
+    //
+    // for(var y=0;y<faceImg.height;y++){
+    //     for(var x=0;x<faceImg.width;x++){
+    //
+    //         var pixelIndex = ((faceImg_copy.width * y) + x)*4;
+    //         var pixelRed = faceImg_copy.pixels[pixelIndex + 0];
+    //         var pixelGreen = faceImg_copy.pixels[pixelIndex + 1];
+    //         var pixelBlue = faceImg_copy.pixels[pixelIndex + 2];
+    //
+    //
+    //         faceImg.pixels[pixelIndex+0] = pixelRed;
+    //         faceImg.pixels[pixelIndex+1] = pixelGreen;
+    //         faceImg.pixels[pixelIndex+2] = pixelBlue;
+    //
+    //     }
+    // }
+    //
+    // faceImg.updatePixels();
+
+    for (var i=0; i<faces.length; i++){
+        var face=faces[i];
+        if (face[4] > 4){
+
+
+            // processPixels(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+            // greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+            // blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+            // pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+
+
+            switch (key) {
+                case "a":
+                    greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    break;
+                case "b":
+                    blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    break;
+                case "c":
+                    // image.src = "image_c.jpg";
+                    HSB_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    break;
+                case "d":
+                    greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    faceImg.updatePixels();
+    image(faceImg,0,faceImg.height*4);
 }

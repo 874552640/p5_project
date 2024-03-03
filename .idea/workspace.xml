@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbb97b05-a5da-4f1d-a365-719c01fb5294" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/face1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/objectdetect.frontalface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/objectdetect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/face2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/p5.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/p5.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/sketch.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,11 +23,11 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+            <state relative-caret-position="220">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -38,28 +35,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/p5.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="712">
               <caret line="274" column="31" selection-start-line="274" selection-start-column="31" selection-end-line="274" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="390" column="32" lean-forward="true" selection-start-line="390" selection-start-column="32" selection-end-line="390" selection-end-column="32" />
+            <state relative-caret-position="1718">
+              <caret line="543" column="5" lean-forward="true" selection-start-line="543" selection-start-column="5" selection-end-line="543" selection-end-column="5" />
               <folding>
                 <element signature="n#!!block;n#RGB_channels#0" />
-                <element signature="n#!!block;n#HSB#0" />
-                <element signature="n#!!block;n#rgbToHsb#0" />
-                <element signature="e#3702#4920#0" />
+                <element signature="n#!!block;n#processPixels#0" />
                 <element signature="n#!!block;n#blur_face#0" />
                 <element signature="n#!!block;n#getSimpleBlurKernel#0" />
                 <element signature="n#!!block;n#convolution#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/face1.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -79,6 +79,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>preload</find>
+      <find>face</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,13 +89,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/sketch_RGBchannel.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/libraries/p5.min.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/sketch.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="232" />
     <option name="y" value="63" />
     <option name="width" value="1440" />
@@ -133,7 +134,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -171,7 +172,9 @@
       <updated>1708437238247</updated>
       <workItem from="1708437240003" duration="11475000" />
       <workItem from="1708922880185" duration="2914000" />
-      <workItem from="1709101686369" duration="8355000" />
+      <workItem from="1709101686369" duration="18242000" />
+      <workItem from="1709196882616" duration="2223000" />
+      <workItem from="1709199997588" duration="1986000" />
     </task>
     <task id="LOCAL-00001" summary="scale the image">
       <created>1708437760578</created>
@@ -212,10 +215,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22744000" />
+    <option name="totallyTimeSpent" value="36840000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496464" />
@@ -291,19 +294,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sketch_RGBchannel.js" />
     <entry file="file://$PROJECT_DIR$/libraries/p5.js" />
-    <entry file="file://$PROJECT_DIR$/assets/beansbag.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/sketch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="46" selection-start-line="46" selection-end-line="64" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/objectdetect.frontalface.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/sketch.js" />
     <entry file="file://$PROJECT_DIR$/libraries/objectdetect.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -318,33 +309,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/beansbag.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/face1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/objectdetect.frontalface.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/p5.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="712">
           <caret line="274" column="31" selection-start-line="274" selection-start-column="31" selection-end-line="274" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sketch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="390" column="32" lean-forward="true" selection-start-line="390" selection-start-column="32" selection-end-line="390" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!block;n#RGB_channels#0" />
-            <element signature="n#!!block;n#HSB#0" />
-            <element signature="n#!!block;n#rgbToHsb#0" />
-            <element signature="e#3702#4920#0" />
-            <element signature="n#!!block;n#blur_face#0" />
-            <element signature="n#!!block;n#getSimpleBlurKernel#0" />
-            <element signature="n#!!block;n#convolution#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        <state relative-caret-position="220">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sketch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1718">
+          <caret line="543" column="5" lean-forward="true" selection-start-line="543" selection-start-column="5" selection-end-line="543" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!block;n#RGB_channels#0" />
+            <element signature="n#!!block;n#processPixels#0" />
+            <element signature="n#!!block;n#blur_face#0" />
+            <element signature="n#!!block;n#getSimpleBlurKernel#0" />
+            <element signature="n#!!block;n#convolution#0" />
+          </folding>
         </state>
       </provider>
     </entry>
