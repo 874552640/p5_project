@@ -14,6 +14,13 @@ var classifier = objectdetect.frontalface;
 
 var imageLoaded = false;
 
+var startXSlider;
+var startYSlider;
+var DwidthSlider;
+var DheightSlider;
+
+
+
 
 function imageLoadedCallback(){
     imageLoaded = true;
@@ -51,6 +58,19 @@ function setup() {
     blueSlider = createSlider(0,256,125);
     blueSlider.parent("blueSlider");
 
+    startXSlider = createSlider(-50,50,0);
+    startXSlider.parent("startX");
+    startYSlider = createSlider(-50,50,0);
+    startYSlider.parent("startY");
+    DwidthSlider = createSlider(-50,50,0);
+    DwidthSlider.parent("Dwidth");
+    DheightSlider = createSlider(-50,50,0);
+    DheightSlider.parent("Dheight");
+
+
+
+
+
     img.resize(120,160);
     //load image pixel values into array pixels
     image(img,0,0);
@@ -66,7 +86,7 @@ function setup() {
 
     document.addEventListener("keydown", function(event){
         key=event.key.toLowerCase();
-        face_detect();
+        // face_detect();
 
     });
 
@@ -382,6 +402,9 @@ function draw(){
     image(hsbImg,hsbImg.width,img.height*4);
 
 
+    face_detect(startXSlider.value(),startYSlider.value(),DwidthSlider.value(),DheightSlider.value());
+
+
     // noLoop();
 }
 
@@ -547,7 +570,7 @@ function HSB_face(startX,startY,dWidth,dHeight){
     // image(faceImg,0,img.height*3);
 }
 
-function face_detect(){
+function face_detect(X_change,Y_change,dWidth_change,dHeight_change){
 
     faceImg.loadPixels();
     faceImg_copy.loadPixels();
@@ -603,18 +626,18 @@ function face_detect(){
 
             switch (key) {
                 case "a":
-                    greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    greyScale_face(int(face[0])+X_change, int(face[1])+Y_change, int(face[2])+dWidth_change, int(face[3])+dHeight_change);
                     break;
                 case "b":
-                    blur_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    blur_face(int(face[0])+X_change, int(face[1])+Y_change, int(face[2])+dWidth_change, int(face[3])+dHeight_change);
                     break;
                 case "c":
                     // image.src = "image_c.jpg";
-                    HSB_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    HSB_face(int(face[0])+X_change, int(face[1])+Y_change, int(face[2])+dWidth_change, int(face[3])+dHeight_change);
                     break;
                 case "d":
-                    greyScale_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
-                    pixel_face(int(face[0]), int(face[1]), int(face[2]), int(face[3]));
+                    greyScale_face(int(face[0])+X_change, int(face[1])+Y_change, int(face[2])+dWidth_change, int(face[3])+dHeight_change);
+                    pixel_face(int(face[0])+X_change, int(face[1])+Y_change, int(face[2])+dWidth_change, int(face[3])+dHeight_change);
                     break;
                 default:
                     break;
